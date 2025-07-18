@@ -15,10 +15,12 @@ async function connectQueue() {
 
 async function sendData(data) {
     try {
+        console.log(data);
         await channel.sendToQueue("noti-queue", Buffer.from(JSON.stringify(data)));
 
     } catch(error) {
         console.log("queue error", error);
+        throw error;
     }
 }
 
